@@ -1,0 +1,76 @@
+ .divCard {
+    width: 30%;    
+    margin: 40px auto;
+    padding: 20px 6px 1px 20px;
+    border-style: inset;
+    border-color: lawngreen;
+    border-radius: 10px;
+    box-shadow: 5px 5px   10px rgb(4, 246, 24);
+    border-width: 5px;
+    outline: 1px solid greenyellow;
+    text-align: center;
+    transition: all 0.1s ease-in-out;
+    color: #000709;
+    text-shadow: 4px 4px 8px rgb(4, 117, 246);/* Sombra de texto */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.divCard:hover {
+  background: linear-gradient(to bottom, #00FF00, #39FF14, #39FF14, #03ea48, #02a51a, transparent); /* Fondo degradado */
+
+}
+
+.botonCard {  
+  border-radius: 10px;  
+  padding: 15px;
+  background-color: rgb(15, 143, 4);
+  color: rgb(9, 12, 1);
+  float: right;
+  font-size: 20px;
+  font-family: fantasy;
+  margin: 0px 10px 5px 5px;
+  transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+  box-shadow: 2px 2px 5px rgb(40, 246, 4); 
+
+}
+
+.botonCard:hover {
+  background-color: rgba(5, 172, 7, 0.68);
+  color: rgba(21, 255, 0, 0.667);
+  cursor: pointer;
+}
+
+.imgCard {
+    border-radius: 20px;
+    border-radius: 10px;
+    border-style: hidden;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 5px 5px   10px rgb(4, 246, 24);
+    outline: 2px solid greenyellow;
+}
+
+.linkCard {
+  color: #00FF00;
+  
+}
+
+.corazon {
+  border-radius: 10px;  
+  padding: 15px;
+  background-color: rgb(15, 143, 4);
+  color: rgb(9, 12, 1);
+  float: left;
+  font-size: 20px;
+  font-family: fantasy;
+  margin: 0px 10px 5px 5px;
+  transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+  box-shadow: 2px 2px 5px rgb(40, 246, 4); 
+}
+
+.corazon:hover {
+  background-color: rgba(5, 172, 7, 0.68);
+  color: rgba(21, 255, 0, 0.667);
+  cursor: pointer;
+}

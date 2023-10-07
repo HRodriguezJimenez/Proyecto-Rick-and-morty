@@ -1,0 +1,66 @@
+.divForm {
+    width: 25%;    
+    margin: 50px auto;
+    padding: 20px ;
+    border-style: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 5px 100px rgb(4, 145, 246);
+    outline: 1px solid rgb(51, 4, 239);
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    color: rgb(0, 0, 0);
+    text-shadow: 4px 4px 8px rgb(4, 141, 246);
+    font-family: fantasy;
+    font-size: 30px;    
+
+}
+
+.imgForm {
+    border-radius: 10px;
+    border-style: hidden;
+    max-width: 100%;    
+    box-shadow: 5px 5px   50px rgb(4, 24, 246);
+    outline: 1px hidden rgb(4, 113, 246);
+    margin-bottom: 10px;
+    
+} 
+
+.dataForm {
+    box-shadow: 5px 5px 1000px rgb(4, 145, 246);
+    outline: 1px solid rgb(51, 4, 239);
+    border-radius: 5px;
+    text-shadow: 4px 4px 8px rgb(4, 141, 246);
+    font-family: fantasy;
+
+}
+
+.inputsForm {
+    background-color: rgb(4, 4, 169);
+    color: rgb(14, 248, 5);
+    font-size: 20px;
+    border-radius: 5px;    
+    border: 1px solid #03f9d9;
+    box-shadow: 10px 10px 10px rgb(3, 85, 166); 
+
+}
+
+.button {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-family: fantasy;
+    padding: 2%;
+    margin: 3%;
+    border: solid;
+    border-color: rgb(25, 0, 255);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(4, 186, 246);
+
+}
+
+.button:hover {
+    background-color: black;
+    color: white; /* Cambia el color del texto al pasar el cursor */
+    cursor: pointer;
+}
+/**/

@@ -1,0 +1,58 @@
+.divDetail {
+  width: 100%;
+  height: auto;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgb(36, 243, 4); /* Sombra suave */  
+  border-radius: 20px;
+  padding: auto;  
+  border-color: rgb(5, 246, 5);  
+  border-style: hidden;
+  flex-direction: column; 
+
+}
+
+.imgDetail {
+    margin-top: 10px;
+    border-radius: 10px;
+    border-style: hidden;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 5px 5px   10px rgb(4, 246, 24);
+    outline: 2px solid greenyellow;
+    /* opacity: 0;
+    transition: opacity 0.9s ease-in-out; */
+}
+
+/* .imgDetail.oculto {
+    opacity: 1;
+} */
+
+.h3Detail {
+    text-align: center;
+    font-family: fantasy;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px yellow;
+    margin-right: 40px;
+    border-style: hidden;    
+    box-shadow: 5px 5px   10px rgb(4, 246, 24);
+    
+
+}
+
+.divDatos {    
+    border-style: hidden;    
+    box-shadow: 5px 5px   10px rgb(4, 246, 24);
+    text-shadow: 2px 2px 4px yellow;
+    font-size: 30px;
+    font-family: fantasy;
+    background-color: rgba(149, 244, 7, 0.222);
+    opacity: 1;
+    transition: opacity 0.9s ease-in-out;
+    
+}
+
+.divDatos.oculto {
+    opacity: 0;
+}

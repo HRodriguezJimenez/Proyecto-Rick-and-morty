@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
-const data = require('./utils/data');
+const getCharById = require('./controllers/getCharById')
+
 
 http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -12,21 +13,9 @@ http.createServer((req, res) => {
         // Obtén el id del personaje de la URL
         const parts = pathName.split('/');
         const idCharacter = parts[parts.length - 1];
-        const numeroId = parseInt(idCharacter, 10); // Convierte a número
-
-        // Busca el personaje por ID
-        const foundCharacter = data.find((character) => character.id === numeroId);
-
-        if (foundCharacter) {
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify(foundCharacter));
-        } else {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('Personaje no encontrado');
-        }
-    } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Ruta no válida');
+        const numeroId = parseInt(idCharacter, 10); // Convierte a número.
+        
+        getCharById(res, numeroId)    
     }
 }).listen(3001);
 

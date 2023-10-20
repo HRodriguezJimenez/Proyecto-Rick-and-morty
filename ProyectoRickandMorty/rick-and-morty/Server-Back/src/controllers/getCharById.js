@@ -1,28 +1,28 @@
 const axios = require('axios');
 
-function getCharById(res, id) {
-  
-  axios(`https://rickandmortyapi.com/api/character/${id}`)
-    .then((response) => {
-      // Extrae los datos relevantes del personaje
-      const characterData = {
-        id,
-        name: response.data.name,
-        gender: response.data.gender,
-        species: response.data.species,
-        origin: response.data.origin.name,
-        image: response.data.image,
-        status: response.data.status,
-      };
+const URL = `https://rickandmortyapi.com/api/character/`;
 
-      // Devuelve la respuesta en formato JSON con status 200
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify(characterData));
+const getCharById = (req, res) => {
+  const id = req.params.id;// obtenemos al id del parametro de la solicitud.
+  axios(`${URL}${id}`)
+    .then((response) => {// la información que retorna en forma de object.
+      if (response.data) {// en la prop data se encuentra la info que necesitamos.
+        const characterData = {
+          id,
+          name: response.data.name,
+          gender: response.data.gender,
+          species: response.data.species,
+          origin: response.data.origin.name,
+          image: response.data.image,
+          status: response.data.status,
+        };
+        res.status(200).json(characterData);
+      } else {
+        res.status(404).send('Not Found'); 
+      }
     })
-    .catch((error) => {
-        // Maneja errores
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end(error.message);
+    .catch((err) => {
+      res.status(500).send({ message: err.message }); // enviamos un error accediendo a al prop message del object err.
     });
 }
 

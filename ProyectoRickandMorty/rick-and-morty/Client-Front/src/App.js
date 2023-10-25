@@ -22,15 +22,26 @@ function App() {
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
 
-  function login(userData) {
+  async function login(userData) {
     const { email, password } = userData;
     const URL = 'http://localhost:3001/rickandmorty/login/';
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-        const { access } = data;
-        setAccess(data);
-        access && navigate('/home');
-    });
-  }    
+    try {// en el bloque try {...} debe ir la solicitud que se realiza y lo que vamos a hacer con su respuesta si es positiva y contiene lo que requerimos.
+      const response = await axios.get(URL, {
+        params: { email, password }
+      });
+      
+      const { data } = response;
+      const { access } = data;
+      
+      setAccess(data);
+      if (access) {
+        navigate('/home');
+      }
+    } catch (error) {
+      // en el catch manejamos las razones/errores del rechazo que pueda tener la solicitud.
+      console.error('Error en la solicitud:', error);
+    }    
+  };  
   
 
   useEffect(() => {
@@ -38,10 +49,9 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [access]);
 
-  function onSearch(id) {
-    axios
-      .get(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
+  async function onSearch(id) {
+    try {
+      const { data } = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`)      
         if (data.name) {
           // Verificar si el personaje ya está en la lista
           const isCharacterInList = characters.some((char) => char.id === data.id);
@@ -53,14 +63,13 @@ function App() {
         } else {
           window.alert('¡No hay personajes con este ID!');
         }
-      })
-      .catch((error) => {
+    } catch(error)  {
         if (error.response && error.response.status === 404) {
           window.alert('¡No se encontró el personaje con este ID!');
         } else {
           window.alert('Ocurrió un error al buscar el personaje.');
         }
-      });
+      };
   }    
 
   const location = useLocation();

@@ -6,7 +6,11 @@ export default function SearchBar({ onSearch }) {
 
   const handleChange = (event) => {
     const { value } = event.target;
-    setId(value);
+    if (!isNaN(value)) {
+      setId(value);
+    } else {
+      alert("Por favor ingresar soló números.");
+    }
   };
 
   const limpiarInput = (event) => {

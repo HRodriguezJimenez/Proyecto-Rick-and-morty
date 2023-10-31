@@ -84,17 +84,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
-
-/*
-.divData {
-  box-shadow: 10px 10px 10px rgb(8, 92, 5); 
-  border: black;
-}
-
-<div className={styles.divData}>
-  <h2>{status}</h2>
-  <h2>{species}</h2>
-  <h2>{gender}</h2>
-  <h2>{origin}</h2>
-</div>
-*/

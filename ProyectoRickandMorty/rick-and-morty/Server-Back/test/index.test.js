@@ -8,10 +8,9 @@ describe('Test de RUTAS', () => {
         it('Responde con status: 200', async () => {
             await agent.get('/rickandmorty/character/1').expect(200);
         })
-
         
         it('Responde un objeto con las propiedades: "id", "name", "species", "gender", "status", "origin" e "image"', async () => {
-            const response = await agent.get('/rickandmorty/character/1')// agent.get('/rickandmorty/character/1') realiza una petición a la appi.
+            const response = await agent.get('/rickandmorty/character/1')// agent.get('/rickandmorty/character/1') realiza una petición a la api.
 
             expect(response.statusCode).toEqual(200)// validamos lo que debe contener la respuesta.
             expect(response.body).toHaveProperty("id");
@@ -56,9 +55,9 @@ describe('Test de RUTAS', () => {
 
         it("Debe agregar un favorito al arreglo existente", async () => {
             await agent.post("/rickandmorty/fav").send({ id: 1, name: 'Favorito 1' })// agregamos un favorito
-            const response = await agent.post("/rickandmorty/fav").send({ id: 2, name: 'Favorito 2' })// agregamo un NUEVO favorito.
+            const response = await agent.post("/rickandmorty/fav").send({ id: 2, name: 'Favorito 2' })// agregamos un NUEVO favorito.
             expect(response.statusCode).toBe(200)
-            expect(response.body).toContainEqual({ id: 2, name: 'Favorito 2' })// verificamos que el arreglo contenga el NUEVO favorito.
+            expect(response.body).toContainEqual({ id: 2, name: 'Favorito 2' })// verificamos que el arreglo contenga el NUEVO favorito y el anterior.
         })
 
         describe("DELETE /rickandmorty/fav/:id", () => {

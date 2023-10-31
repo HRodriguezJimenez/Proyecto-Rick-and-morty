@@ -4,23 +4,35 @@ import { validateForm } from "./validation";
 
 function Form({ login }) {
   const [userData, setUserData] = useState({
+    // creamos el estado "userData" = { email: "", password: "", }
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({
+    //creamos un estado para manejar los errores en la validación.
     email: "",
     password: "",
   });
 
+  //creamos una función que va a recibir un evento por parametro y va a generar un cambio en el elemento que genere el evento.
   function handleChange(event) {
-    const { name, value } = event.target;
+    const { name, value } = event.target; //accedemos a la información del elemento "html" que genera el evento en este caso esta pendiente de los input con propiedad (name:"email" y name:"password")
     setUserData({
+      // modificamos una copia del estado y le agregamos la información recibida.
       ...userData,
       [name]: value,
+      // name: "email" ó name: "password" dependiendo de quien reciba el cambio.
     });
 
     setErrors(validateForm({ ...userData, [name]: value }));
+    /*
+    + setErrors() = encargada de modificar el estado (errors = { email: "", password: "",})
+    
+    + validateForm() = función encargada de validar la información recibida del evento ("email" ó "pasword") y retorna un array con los errores que tenga la validación. Recibe por parametros una copia con lo que contenga el (state userData) y el valor que contiene el evento.
+
+    
+    */
   }
 
   function handleSubmit(event) {
@@ -47,8 +59,8 @@ function Form({ login }) {
           <input
             className={styles.inputsForm}
             type="email"
-            value={userData.email}
-            onChange={handleChange}
+            value={userData.email} // su valor es lo que reciba por por data.
+            onChange={handleChange} // cuando se genere un cambio se ejecuta handleChange.
             name="email"
             placeholder="email"
           />
@@ -61,12 +73,12 @@ function Form({ login }) {
           <input
             className={styles.inputsForm}
             type="password"
-            value={userData.password}
-            onChange={handleChange}
+            value={userData.password} //su valor es lo que reciba por por data.
+            onChange={handleChange} // cuando se genere un cambio se ejecuta handleChange.
             name="password"
             placeholder="password"
           />
-          {errors.password ? (
+          {errors.password ? ( //
             <p>{errors.password}</p>
           ) : (
             <p>Ingrese Información</p>

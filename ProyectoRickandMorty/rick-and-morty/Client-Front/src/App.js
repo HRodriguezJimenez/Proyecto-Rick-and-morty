@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from './components/Nav/Nav';
+import Nav from './views/Nav/Nav';
 import About from "./views/About/About";
 import Detail from "./views/Detail/Detail";
 import Home from './views/Home/Home';
@@ -12,28 +12,27 @@ import './App.css';
 
 function App() {
 
-  const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState([])// creamos el state = characters = [...].
 
   const onClose = (id) => {// función que hara un filtro en el estado "characters" por el id.
-    const filtro = characters.filter((char) => char.id !== id)
-    setCharacters(filtro)
+    setCharacters(characters.filter((char) => char.id !== id))    
   } 
 
   const navigate = useNavigate();// función que nos permite navegar a donde se le indique.
   const [access, setAccess] = useState(false);// estado que vamos a usar para validar el acceso.
 
   async function login(userData) {// función asincronica para enviar una solicitud para aprobar el ingreso de un usuario.
-    const { email, password } = userData;//accedemos a los datos de la solicitud.
+    const { email, password } = userData;//accedemos a los datos que envian en la solicitud.
     const URL = 'http://localhost:3001/rickandmorty/login/';
     try {//en el bloque try{...} manejamos la respuesta exitosa de la solicitud.
-      const response = await axios.get(URL, {
+      const response = await axios.get(URL, {// enviamos los datos al servidor.
         params: { email, password }
       });
       
-      const { data } = response;
-      const { access } = data;
+      const { data } = response;// la const "response" contiene la respuesta en una propiedad llamada "data" por eso la destructuramos en la const "data". = data : {access: true}
+      const { access } = data;// en la const "data". = data : {access: true} encontramos la propiedad "access: true"
       
-      setAccess(data);
+      setAccess(access);
       if (access) {// opcional = access && navigate
         navigate('/home');
       }
@@ -52,11 +51,11 @@ function App() {
   async function onSearch(id) {// función encargada de buscar un personaje con "id" especifico.
     try {
       const { data } = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`)      
-        if (data.name) {
+        if (data.id) {
           // Verificar si el personaje ya está en la lista
           const isCharacterInList = characters.some((char) => char.id === data.id);// extraemos SOLO el personaje que conincida con el "id" enviado por parametro.
           if (!isCharacterInList) {
-            setCharacters((oldChars) => [...oldChars, data]);//si el personaje NO existe creamos una copia del estado antiguo y anexamos el resultado de la busqueda.
+            setCharacters((oldChars) => [...oldChars, data]);//si el personaje NO existe creamos una copia del estado antiguo y anexamos la respuesta del servidor.
           } else {
             window.alert('¡Este personaje ya está en la lista!');
           }
@@ -65,9 +64,9 @@ function App() {
         }
     } catch(error) {//manejamos un posible error en la solicitud.
         if (error.response && error.response.status === 404) {
-          window.alert('¡No se encontró el personaje con este ID!');
+          window.alert('Por favor ingresa un número de ID.');
         } else {
-          window.alert('Ocurrió un error al buscar el personaje.');
+          window.alert('No hay personajes con este ID.');
         }
       };
   }    

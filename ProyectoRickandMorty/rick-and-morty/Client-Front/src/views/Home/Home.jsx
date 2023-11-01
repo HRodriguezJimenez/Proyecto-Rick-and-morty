@@ -1,4 +1,4 @@
-import Cards from "../../components/Cards/Cards";
+import Cards from "../Cards/Cards";
 
 //Este seria un componente presentacional SOLO RENDERIZA INFORMACIÓN.
 

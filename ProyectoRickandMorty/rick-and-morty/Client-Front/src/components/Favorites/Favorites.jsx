@@ -4,7 +4,7 @@ import { orderCards, filterCards } from "../../Redux/actions";
 import Card from "../Card/Card";
 import styles from "./Favorites.module.css";
 
-function Favorites({ myFavorites }) {
+function Favorites({ myFavorites, onClose }) {
   const dispatch = useDispatch();
 
   const [aux, setAux] = useState(false);
@@ -30,9 +30,18 @@ function Favorites({ myFavorites }) {
         <option value="Genderless">Genderless</option>
         <option value="unknown">unknown</option>
       </select>
-      {myFavorites.map(({ id, name, image, gender }) => (
-        <Card key={id} id={id} name={name} image={image} gender={gender} />
-      ))}
+      <div className={styles.divCards}>
+        {myFavorites.map(({ id, name, image, gender }) => (
+          <Card
+            key={id}
+            id={id}
+            name={name}
+            image={image}
+            gender={gender}
+            onClose={onClose}
+          />
+        ))}
+      </div>
     </div>
   );
 }

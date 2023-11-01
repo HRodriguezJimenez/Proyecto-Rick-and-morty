@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import Card from "../../components/Card/Card";
 import React from "react";
 import styles from "./Cards.module.css";
 
@@ -27,7 +27,7 @@ export default function Cards({ characters, onClose }) {
             gender={gender}
             origin={origin.name}
             image={image}
-            onClose={() => onClose(id)} //cuando el componente se cierre ejecutara la función onClose(id)
+            onClose={() => onClose(id)} //enviamos por props la función onClose(id) para que elimine un una card de un personaje por su id.
           />
         );
       })}

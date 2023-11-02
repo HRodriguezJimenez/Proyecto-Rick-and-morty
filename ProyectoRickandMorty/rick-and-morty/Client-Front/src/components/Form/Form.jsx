@@ -29,15 +29,14 @@ function Form({ login }) {
     /*
     + setErrors() = encargada de modificar el estado (errors = { email: "", password: "",})
     
-    + validateForm() = función encargada de validar la información recibida del evento ("email" ó "pasword") y retorna un array con los errores que tenga la validación. Recibe por parametros una copia con lo que contenga el (state userData) y el valor que contiene el evento.
-
-    
+    + validateForm() = función encargada de validar la información recibida del evento ("email" ó "pasword") y retorna un array con los errores que tenga la validación. Recibe por parametros una copia con lo que contenga el (state userData) y el valor que contiene el evento.    
     */
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
-    login(userData);
+    // función para enviar la información del formulario.
+    event.preventDefault(); //evitamos el comportamiento del boton submit para que no se recargue la pagina y poder conservar los datos.
+    login(userData); // le pasamos la data a la función login que envian por props.
   }
 
   useEffect(() => {
@@ -65,7 +64,7 @@ function Form({ login }) {
             placeholder="email"
           />
 
-          {errors.email ? <p>{errors.email}</p> : <p>Ingrese Información</p>}
+          {errors.email ? <p>{errors.email}</p> : null}
 
           <label className={styles.labelsForm} htmlFor="password">
             PASSWORD
@@ -78,11 +77,8 @@ function Form({ login }) {
             name="password"
             placeholder="password"
           />
-          {errors.password ? ( //
-            <p>{errors.password}</p>
-          ) : (
-            <p>Ingrese Información</p>
-          )}
+
+          {errors.password ? <p>{errors.password}</p> : null}
 
           <button type="submit" className={styles.button}>
             SUBMIT

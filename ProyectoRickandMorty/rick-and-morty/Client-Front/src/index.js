@@ -17,5 +17,14 @@ root.render(
 );
 
 
+/*
+root.render(
+  <Provider store={store}>//* elemento de react-redux que permite la conexión con el "store" de redux.
+    <BrowserRouter>//* envuelve la aplicación para permitir el ruteo.
+      <App />
+    </BrowserRouter>
+  </Provider>
+);
+*/
 
 

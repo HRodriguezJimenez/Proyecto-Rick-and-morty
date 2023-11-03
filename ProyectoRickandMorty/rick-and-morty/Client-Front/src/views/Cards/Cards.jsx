@@ -25,9 +25,9 @@ export default function Cards({ characters, onClose }) {
             status={status}
             species={species}
             gender={gender}
-            origin={origin.name}
+            origin={origin}
             image={image}
-            onClose={() => onClose(id)} //enviamos por props la función onClose(id) para que elimine un una card de un personaje por su id.
+            onClose={onClose} //enviamos por props la función onClose(id) para que elimine un una card de un personaje por su id.
           />
         );
       })}

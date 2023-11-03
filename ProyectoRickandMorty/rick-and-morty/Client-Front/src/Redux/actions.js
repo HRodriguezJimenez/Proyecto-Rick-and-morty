@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV, ORDER, FILTER } from "./actionsType";
+import { ADD_FAV, REMOVE_FAV, ORDER, FILTER, RANDOM } from "./actionsType";
 import axios from "axios";
 
 export const addFav = (character) => {
@@ -45,3 +45,16 @@ export const orderCards = (order) => {
     }
 };
 
+export const randomCard = () => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get("http://localhost:3001/rickandmorty/randomCharacter")
+            dispatch({
+                type: RANDOM,
+                payload: response.data,
+            })
+        } catch (error) {
+            throw Error({error: error.message})    
+        }
+    }
+}

@@ -17,6 +17,10 @@ export default function Nav({ onSearch }) {
         <button className={styles.linkNav}>Favorites</button>
       </Link>
 
+      <Link to="/randomCharacter">
+        <button className={styles.linkNav}>Personaje aleatorio</button>
+      </Link>
+
       <SearchBar onSearch={onSearch} />
     </div>
   );

@@ -7,6 +7,7 @@ import Detail from "./views/Detail/Detail";
 import Home from './views/Home/Home';
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
+import Random from "./components/Random/Random";
 import './App.css';
 
 
@@ -80,6 +81,7 @@ function App() {
           location.pathname.startsWith('/home') || 
           location.pathname.startsWith('/about') || 
           location.pathname.startsWith('/detail') ||
+          location.pathname.startsWith('/randomCharacter') ||
           location.pathname.startsWith('/favorites') ? (
               <Nav onSearch={onSearch} />
           ) : null
@@ -96,6 +98,8 @@ function App() {
           <Route path="/favorites" element={<Favorites onClose={onClose} />} />          
 
           <Route path="/detail/:id" element={<Detail />} />
+
+          <Route path="/randomCharacter" element={<Random onClose={onClose} />} />
 
         </Routes >
         

@@ -1,19 +1,35 @@
-import { ADD_FAV, FILTER, REMOVE_FAV, ORDER  } from "./actionsType";
+import { ADD_FAV, FILTER, REMOVE_FAV, ORDER, RANDOM  } from "./actionsType";
 
 
 const initialState = {
     myFavorites: [],
     allCharacters: [],
+    randomCharacter: null,
 };
 
 const rootReducer = (state = initialState, action) => {    
     switch (action.type) {
         case ADD_FAV:
-            return { ...state, myFavorites: action.payload, allCharacters: action.payload };
+            let copia = state.allCharacters;
+            copia.push(action.payload)
+            return {
+                ...state,
+                myFavorites: copia,
+                allCharacters: copia,
+            }
             
         case REMOVE_FAV:
-            return { ...state, myFavorites: action.payload };
+            let copy2 = state.myFavorites.filter((char) => {
+                return char.id !== Number(action.payload);
+              });
+              return {
+                ...state,
+                myFavorites: copy2,
+              };
 
+        case RANDOM: 
+            return { ...state, randomCharacter: action.payload }
+        
         case FILTER:
             const filteredCharacters = state.allCharacters.filter((char) => 
                 char.gender === action.payload
@@ -39,7 +55,7 @@ const rootReducer = (state = initialState, action) => {
             
             return { ...state,
                 myFavorites: copyState3,
-            };            
+            };
     
         default:
             return { ...state };

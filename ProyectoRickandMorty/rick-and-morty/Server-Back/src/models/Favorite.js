@@ -2,11 +2,18 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
    sequelize.define('Favorite', {
+      // idDB: {
+      //    type: DataTypes.INTEGER,
+      //    allowNull: false,
+      //    primaryKey: true,
+      //    autoIncrement: true,
+      // },
       id: {
          type: DataTypes.INTEGER,
          allowNull: false,
          primaryKey: true,
-         //autoIncrement: true,
+         autoIncrement: true,
+         //defaultValue: DataTypes.UUIDV4,
       },
       name: {
          type: DataTypes.STRING,

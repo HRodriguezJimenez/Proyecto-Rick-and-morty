@@ -14,23 +14,22 @@ function Random ({ randomCharacter, onClose }) {
 
     return (
         <div className={styles.divRandom}>
-      <h2>Personaje Aleatorio</h2>
-      {randomCharacter ? (
-        <Card
-        key={randomCharacter.id}
-        id={randomCharacter.id}
-        name={randomCharacter.name}
-        status={randomCharacter.status}
-        species={randomCharacter.species}
-        gender={randomCharacter.gender}
-        origin={randomCharacter.origin.name}
-        image={randomCharacter.image}   
-        onClose={() => onClose()}     
-    /> ) : (
-        <p>Haz clic en el botón para obtener un personaje aleatorio.</p>
-      )}
-      <button onClick={handleGetRandom}>Obtener Personaje Aleatorio</button>
-    </div>
+            {randomCharacter ? (
+                <Card
+                key={randomCharacter.id}
+                id={randomCharacter.id}
+                name={randomCharacter.name}
+                status={randomCharacter.status}
+                species={randomCharacter.species}
+                gender={randomCharacter.gender}
+                origin={randomCharacter.origin}
+                image={randomCharacter.image}   
+                onClose={() => onClose()}     
+            /> ) : (
+                <p>Haz clic en el botón para obtener un personaje aleatorio.</p>
+            )}
+            <button className={styles.boton} onClick={handleGetRandom}>Obtener Personaje Aleatorio</button>
+        </div>
     )
 }
 

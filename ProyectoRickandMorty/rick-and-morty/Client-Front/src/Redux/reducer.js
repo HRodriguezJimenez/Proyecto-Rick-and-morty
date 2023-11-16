@@ -4,7 +4,7 @@ import { ADD_FAV, FILTER, REMOVE_FAV, ORDER, RANDOM  } from "./actionsType";
 const initialState = {
     myFavorites: [],
     allCharacters: [],
-    randomCharacter: null,
+    randomCharacter: [],
 };
 
 const rootReducer = (state = initialState, action) => {    

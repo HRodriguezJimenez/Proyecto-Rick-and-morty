@@ -61,6 +61,7 @@ function Form({ login }) {
             value={userData.email} // su valor es lo que reciba por por data.
             onChange={handleChange} // cuando se genere un cambio se ejecuta handleChange.
             name="email"
+            id="email"
             placeholder="email"
           />
 
@@ -75,6 +76,7 @@ function Form({ login }) {
             value={userData.password} //su valor es lo que reciba por por data.
             onChange={handleChange} // cuando se genere un cambio se ejecuta handleChange.
             name="password"
+            id="password"
             placeholder="password"
           />
 

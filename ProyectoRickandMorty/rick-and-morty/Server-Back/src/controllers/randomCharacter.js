@@ -25,10 +25,10 @@ const randomCharacter = async (req, res) => {
             status: randomCharacter.status,
         };
         
-        res.status(200).json(characterData);
+        res.status(200).send(characterData);
         
     } catch (error) {
-        res.status(500).send({ error: error.message })
+        res.status(500).json({ error: error.message })
     }
 }
 

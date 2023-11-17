@@ -21,7 +21,7 @@ const getCharById = async (req, res) => {
       res.status(404).send('Not Found'); 
     }
   } catch (error) {// manejamos un error del lado del servidor.
-    res.status(500).send({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 }
 

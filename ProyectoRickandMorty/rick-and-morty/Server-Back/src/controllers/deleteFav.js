@@ -9,7 +9,7 @@ const deleteFav = async (req, res) => {
             where: { id },
         })
         if (!response) {
-            return res.send({ message: "El personaje no se pudo eliminar" })
+            return res.json({ message: "El personaje no se pudo eliminar" })
         } else {
             const favorites = await getAllFavorites()
             return res.status(201).send(favorites)

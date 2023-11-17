@@ -4,15 +4,17 @@ const { User } = require('../DB_connection')
 const postUser = async (req, res) => {
     try {
         const { email, password } = req.body;// destruturamos lo que envian por body.
-        if(!email || !password) return res.status(400).send({ message: "Datos incompletos." })
+        if(!email || !password) return res.status(400).json({ message: "Datos incompletos." })
         const [user, isCreated] = await User.findOrCreate({// si todo esta ok usamos la función findOrCreate() para crear el user en al BD.
-        where: {// especificamos que seleccione solo el email y el password.
-            email: email,
-            password: password,
-        }})        
-        res.status(201).send({ user, created: isCreated })
+            where: { email },
+            defaults: {
+                password,
+            }
+        })  
+        if(!isCreated) return res.status(409).json({ error: "El email ya está registrado." })      
+        res.status(201).json({ user, created: isCreated })
     } catch (error) {
-        res.status(500).send({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 
 }

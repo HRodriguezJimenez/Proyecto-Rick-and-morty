@@ -1,7 +1,8 @@
 import { connect, useDispatch } from "react-redux";
 import React, { useState } from "react";
 import { orderCards, filterCards } from "../../Redux/actions";
-import Card from "../Card/Card";
+//import Card from "../Card/Card";
+import Cards from "../../views/Cards/Cards";
 import styles from "./Favorites.module.css";
 
 function Favorites(props) {
@@ -32,30 +33,7 @@ function Favorites(props) {
         <option value="unknown">unknown</option>
       </select>
       <div className={styles.divCards}>
-        {myFavorites.map(function ({
-          id,
-          name,
-          status,
-          species,
-          gender,
-          origin,
-          image,
-        }) {
-          return (
-            //renderizamos el componente Card con lo que recibimos en "characters"
-            <Card
-              key={id}
-              id={id}
-              name={name}
-              status={status}
-              species={species}
-              gender={gender}
-              origin={origin}
-              image={image}
-              onClose={onClose} //enviamos por props la función onClose(id) para que elimine un una card de un personaje por su id.
-            />
-          );
-        })}
+        <Cards characters={myFavorites} onClose={onClose} />
       </div>
     </div>
   );

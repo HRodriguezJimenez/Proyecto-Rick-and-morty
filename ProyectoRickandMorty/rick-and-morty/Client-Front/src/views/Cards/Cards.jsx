@@ -10,11 +10,11 @@ export default function Cards({ characters, onClose }) {
         //realizamos un mapeo del contenido del "prop" characters.
         id,
         name,
-        status,
-        species,
-        gender,
-        origin,
         image,
+        gender,
+        species,
+        origin,
+        status,
       }) {
         return (
           //renderizamos el componente Card con lo que recibimos en "characters"

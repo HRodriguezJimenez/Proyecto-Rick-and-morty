@@ -95,7 +95,7 @@ function App() {
 
           <Route path="/about" element={<About />} />  
 
-          <Route path="/favorites" element={<Favorites onClose={onClose} />} />          
+          <Route path="/favorites" element={<Favorites characters={characters} onClose={onClose} />} />          
 
           <Route path="/detail/:id" element={<Detail />} />
 

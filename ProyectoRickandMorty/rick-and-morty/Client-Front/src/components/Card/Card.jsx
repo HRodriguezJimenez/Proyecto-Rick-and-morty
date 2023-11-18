@@ -8,8 +8,11 @@ function Card({
   id,
   name,
   image,
-  onClose,
   gender,
+  species,
+  origin,
+  status,
+  onClose,
   addFav,
   removeFav,
   myFavorites,
@@ -27,7 +30,7 @@ function Card({
   function handleFavorite() {
     if (!isFav) {
       setIsFav(true);
-      addFav({ id, name, image, onClose, gender });
+      addFav({ id, name, image, onClose, gender, species, origin, status });
     }
 
     if (isFav) {

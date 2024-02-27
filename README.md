@@ -13,5 +13,4 @@
 > El Back lo desarrollamos con **Express**.
 > Manejamos la creación de una base de datos local con **Sequelize**.
 
-El proyecto permite el registro de usarios para ingresar en la app renderiza tarjetas con los personajes de la serie, el usuario puede realizar una busqueda de personajes por el número 
-de indentificación de cada personaje, cuenta con la posibilidad de tener personajes favoritos en al app.
+El proyecto permite el registro de usuarios para ingresar en la app renderiza tarjetas con los personajes de la serie, el usuario puede realizar una busqueda de personajes por el número de indentificación de cada personaje, cuenta con la posibilidad de tener personajes favoritos en al app.
